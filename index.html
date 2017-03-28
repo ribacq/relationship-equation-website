@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Canvas tests</title>
+	<style type="text/css">
+		canvas{
+			background: #444;
+		}
+	</style>
+</head>
+<body>
+<canvas id="cvs" height="300" width="300">No Canvas JS</canvas>
+<p><input type="number" value="27" min="1" id="seqStart"/></p>
+
+<script>
+function f(x) {
+	var ret;
+	if (x%2) {
+		ret = x*3+1;
+	} else {
+		ret = x/2;
+	}
+	return ret;
+}
+
+canvas = document.getElementById('cvs')
+cvs = canvas.getContext('2d');
+cvs.translate(0, canvas.height);
+cvs.scale(1, -1);
+function draw(seqStart) {
+	cvs.clearRect(0, 0, canvas.width, canvas.height);
+
+	cvs.fillStyle = '#088';
+	cvs.strokeStyle = '#088';
+	var x = [0];
+	var y = [seqStart];
+	var seqLen = 0;
+	while (y[y.length-1] !== 1) {
+		x.push(seqLen);
+		y.push(f(y[seqLen-1]));
+		seqLen++;
+	}
+
+	cvs.beginPath();
+	cvs.moveTo(0, 0);
+	for (var i = 0; i < seqLen-1; i++) {
+		cvs.lineTo(canvas.height/seqLen*x[i+1], canvas.height/seqLen*y[i+1]);
+	}
+	cvs.stroke();
+}
+
+document.getElementById('seqStart').onchange = function () {
+	draw(this.value);
+};
+</script>
+
+</body>
+</html>
+
