@@ -4,14 +4,28 @@
 	<meta charset="utf-8"/>
 	<title>Canvas tests</title>
 	<style type="text/css">
+		body{
+			margin: 40px auto;
+			max-width: 650px;
+			line-height: 1.2;
+			font-size: 18px;
+			color: #444;
+			padding: 0 10px;
+		}
+
+		h1, h2, h3{
+			line-height: 1.2;
+		}
+
 		canvas{
 			background: #444;
 		}
 	</style>
 </head>
 <body>
-<canvas id="cvs" height="300" width="300">No Canvas JS</canvas>
-<p><input type="number" value="27" min="1" id="seqStart"/></p>
+<h1>A canvas test with the Syracuse sequence</h1>
+<canvas id="myCanvas" height="300" width="300">No Canvas JS</canvas>
+<p><input type="number" value="260" min="1" id="seqStart"/></p>
 
 <script>
 function f(x) {
@@ -24,35 +38,44 @@ function f(x) {
 	return ret;
 }
 
-canvas = document.getElementById('cvs')
-cvs = canvas.getContext('2d');
-cvs.translate(0, canvas.height);
-cvs.scale(1, -1);
-function draw(seqStart) {
-	cvs.clearRect(0, 0, canvas.width, canvas.height);
+canvas = document.getElementById('myCanvas')
+ctx = canvas.getContext('2d');
+ctx.translate(0, canvas.height);
+ctx.scale(1, -1);
 
-	cvs.fillStyle = '#088';
-	cvs.strokeStyle = '#088';
+function draw(seqStart) {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.fillStyle = '#088';
+	ctx.strokeStyle = '#088';
+	ctx.strokeWidth = '5px';
 	var x = [0];
 	var y = [seqStart];
 	var seqLen = 0;
+	var seqMax = 0;
 	while (y[y.length-1] !== 1) {
-		x.push(seqLen);
+		x.push(seqLen++);
 		y.push(f(y[seqLen-1]));
-		seqLen++;
+		if (seqMax < y[seqLen]) {
+			seqMax = y[seqLen];
+		}
 	}
 
-	cvs.beginPath();
-	cvs.moveTo(0, 0);
+	ctx.beginPath();
+	ctx.moveTo(0, 0);
 	for (var i = 0; i < seqLen-1; i++) {
-		cvs.lineTo(canvas.height/seqLen*x[i+1], canvas.height/seqLen*y[i+1]);
+		ctx.lineTo(canvas.height/seqLen*x[i+1], canvas.height/seqMax*y[i+1]);
 	}
-	cvs.stroke();
+	ctx.lineTo(0, 0);
+	ctx.fill();
 }
 
-document.getElementById('seqStart').onchange = function () {
+var input = document.getElementById('seqStart');
+input.onchange = function () {
 	draw(this.value);
 };
+
+draw(input.value);
 </script>
 
 </body>
