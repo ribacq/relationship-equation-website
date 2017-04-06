@@ -25,52 +25,50 @@
 <body>
 <h1>A canvas test with the Syracuse sequence</h1>
 <canvas id="myCanvas" height="300" width="300">No Canvas JS</canvas>
-<p><input type="number" value="260" min="1" id="seqStart"/></p>
+<p><input type="number" value="16" min="1" id="seqStart"/></p>
 
 <script>
-function f(x) {
-	var ret;
-	if (x%2) {
-		ret = x*3+1;
-	} else {
-		ret = x/2;
-	}
-	return ret;
-}
-
 canvas = document.getElementById('myCanvas')
 ctx = canvas.getContext('2d');
 ctx.translate(0, canvas.height);
 ctx.scale(1, -1);
 
+function seqGen(n) {
+	return function () {
+		n = n%2 ? n*3+1 : n/2;
+		return n;
+	};
+}
+
 function draw(seqStart) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	ctx.fillStyle = '#088';
-	ctx.strokeStyle = '#088';
-	ctx.strokeWidth = '5px';
-	var x = [0];
-	var y = [seqStart];
-	var seqLen = 0;
-	var seqMax = 0;
+	let gen = seqGen(seqStart);
+	let x = [];
+	let y = [];
+	let seqLen = 0;
+	let seqMax = 0;
 	while (y[y.length-1] !== 1) {
 		x.push(seqLen++);
-		y.push(f(y[seqLen-1]));
-		if (seqMax < y[seqLen]) {
-			seqMax = y[seqLen];
+		y.push(gen());
+		if (seqMax < y[seqLen-1]) {
+			seqMax = y[seqLen-1];
 		}
 	}
 
 	ctx.beginPath();
 	ctx.moveTo(0, 0);
-	for (var i = 0; i < seqLen-1; i++) {
+	for (let i = 0; i < seqLen-1; i++) {
 		ctx.lineTo(canvas.height/seqLen*x[i+1], canvas.height/seqMax*y[i+1]);
+		console.log((canvas.width/seqLen)*x[i+1]);
+		console.log((canvas.height/seqMax)*y[i+1]);
 	}
 	ctx.lineTo(0, 0);
 	ctx.fill();
 }
 
-var input = document.getElementById('seqStart');
+let input = document.getElementById('seqStart');
 input.onchange = function () {
 	draw(this.value);
 };
