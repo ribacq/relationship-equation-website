@@ -1,4 +1,7 @@
 # The Relationship Equation
+
+--> https://ribacq.github.io/relationship-equation-website
+
 This website is an English class project presenting what is here named, ‘the Relationship Equation’,
 a mathematical sequence, the members of which represent the overall ‘mood’ of two members of a
 couple, or two countries in a geopolitical conflict, or two buisiness companies, etc.
