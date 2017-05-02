@@ -12,20 +12,39 @@
 			color: #444;
 			background: #ddd;
 			padding: 0 10px;
+			background: #abcbf7;
 		}
 
 		h1, h2, h3{
 			line-height: 1.2;
-			color: #ff0c00;
+			color: #121de8;
 		}
 
-		canvas{
-			background: #444;
+		strong{
+			color: #e85656;
+		}
+
+		p{
+			color: #088;
+		}
+
+		div.card, canvas{
+			background: #ccc;
+			border-radius: 5px;
+			width: 80%;
+			margin: 5px auto;
+			border: 2px solid #088;
+			box-shadow: 0 0 5px #088;
+			padding: 3px;
 		}
 	</style>
 </head>
 <body>
 <h1>A canvas test with the Syracuse sequence</h1>
+<p>Hello <strong>world</strong>!</p>
+<div class="card">
+	Yolo!
+</div>
 <canvas id="myCanvas" height="300" width="300">No Canvas JS</canvas>
 <p><input type="number" value="1995" min="1" id="seqStart"/></p>
 <p id="ydisp"></p>
