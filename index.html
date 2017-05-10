@@ -14,10 +14,10 @@
 			background: #abcbf7;
 		}
 
-		html{
+		/*html{
 			box-shadow: 0 0 50vh #00f inset;
 			height: 100vh;
-		}
+		}*/
 
 		h1, h2, h3{
 			line-height: 1.2;
@@ -42,17 +42,12 @@
 <body>
 <h1>A canvas test with the Syracuse sequence</h1>
 <p>Hello <strong>world</strong>!</p>
-<canvas id="myCanvas" height="300" width="300">No Canvas JS</canvas>
-<p><input type="number" value="1995" min="1" id="seqStart"/></p>
-<p id="ydisp"></p>
+<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
+
+<p>$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$</p>
+<p>$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$</p>
 
 <script>
-canvas = document.getElementById('myCanvas');
-ydisp = document.getElementById('ydisp');
-ctx = canvas.getContext('2d');
-ctx.translate(0, canvas.height);
-ctx.scale(1, -1);
-
 function moodGen(hStart, wStart, h, w, rH, rW, infWH, infHW, lim) {
 	hMood = [hStart];
 	wMood = [wStart];
@@ -107,29 +102,54 @@ function drawMoodTime() {
 	}
 	let lim = 100;
 	moods = moodGen(hStart, wStart, h, w, rH, rW, infWH, infHW, lim);
+	let wMood = moods[0];
+	let hMood = moods[1];
 
-	//data display part
+	//display graph
+	drawXY(document.getElementById("hwGraph"), hMood, wMood);
+}
+
+function drawXY(canvas, x, y) {
+	//get and init. canvas context and style
+	let ctx = canvas.getContext('2d');
+	ctx.translate(0, canvas.height);
+	ctx.scale(1, -1);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.strokeStyle = '#088';
-	let x = moods[1];
-	let y = moods[0];
-	seqLen = 0;
-	seqMax = y[0];
-	console.log(x);
-	console.log(y);
-	for (let i = 0; i < y.length; i++) {
-		x.push(i);
-		if (seqMax < y[++seqLen - 1]) {
-			seqMax = y[seqLen - 1];
-		}
+
+	//get data
+	let seqLen = x.length;
+	let xMin = x[0];
+	let xMax = x[0];
+	let yMin = y[0];
+	let yMax = y[0];
+	for (let i = 0; i < seqLen; i++) {
+		xMin = Math.min(xMin, x[i]);
+		xMax = Math.max(xMax, x[i]);
+		yMin = Math.min(yMin, y[i]);
+		yMax = Math.max(yMax, y[i]);
 	}
-	console.log(seqLen, seqMax);
+	xMin *= -0.5;
+	yMin *= -0.5;
+	console.log(xMin, xMax, yMin, yMax);
+
+	//draw axis
+	ctx.strokeStyle = '#e85656';
+	//x-axis
+	ctx.moveTo(0, (canvas.height / (yMax - yMin)) * (-yMin));
+	ctx.lineTo(canvas.width, (canvas.height / (yMax - yMin)) * (-yMin));
+	ctx.stroke();
+	//y-axis
+	ctx.moveTo((canvas.width / (xMax - xMin)) * (-xMin), 0);
+	ctx.lineTo((canvas.width / (xMax - xMin)) * (-xMin), canvas.height);
+	ctx.stroke();
+
+	//draw graph
+	ctx.strokeStyle = '#088';
 	ctx.beginPath();
-	ctx.moveTo(0, canvas.height / seqMax * y[0]);
+	ctx.moveTo((canvas.width / (xMax - xMin)) * (x[0] - xMin), (canvas.height / (yMax - yMin)) * (y[0] - yMin));
 	for (let i = 1; i < seqLen; i++) {
-		let nextX = canvas.width  / seqLen * x[i];
-		let nextY = canvas.height / seqMax * y[i];
-		console.log(nextX, nextY);
+		let nextX = (canvas.width  / (xMax - xMin)) * (x[i] - xMin);
+		let nextY = (canvas.height / (yMax - yMin)) * (y[i] - yMin);
 		ctx.lineTo(nextX, nextY);
 	}
 	ctx.stroke();
