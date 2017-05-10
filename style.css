@@ -1,0 +1,33 @@
+body{
+	margin: 40px auto;
+	max-width: 650px;
+	line-height: 1.2;
+	font-size: 18px;
+	color: #444;
+	padding: 0 10px;
+	background: #abcbf7;
+}
+
+html{
+	box-shadow: 0 0 50vh #00f inset;
+}
+
+h1, h2, h3{
+	line-height: 1.2;
+	color: #121de8;
+	text-shadow: 0 0 20px #fff;
+}
+
+strong{
+	color: #e85656;
+}
+
+p, canvas{
+	margin: 5px auto;
+	padding: 3px;
+	border: 1px solid #088;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #088;
+	background: #ccc;
+}
+
