@@ -6,17 +6,28 @@
 	<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-	<h1>A canvas test with the Syracuse sequence</h1>
-	<p>Hello <strong>world</strong>!</p>
-	<h2>t --> h &amp; t --> w</h2>
-	<canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
-	<canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
-	<h2>h --> w</h2>
-	<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
-	<p id="sidep"></p>
-
+	<h1>The Relationship Equation</h1>
 	<p>$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$</p>
 	<p>$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$</p>
+
+	<p>
+		<label for="hStart">Husband’s starting point:</label>
+		<input type="range" value="0" min="-20" max="20" step="0.5" id="hStart"/>
+		<span id="hVal">0</span>
+		<br/>
+		<label for="wStart">Wife’s starting point:</label>
+		<input type="range" value="0" min="-20" max="20" step="0.5" id="wStart"/>
+		<span id="wVal">0</span>
+		<br/>
+		<button id="updateBtn">Update</button>
+	</p>
+
+	<h2>w(h)</h2>
+	<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
+
+	<h2>h(t) &amp; w(t)</h2>
+	<canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
+	<canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
 
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>

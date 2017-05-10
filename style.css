@@ -31,3 +31,8 @@ p, canvas{
 	background: #ccc;
 }
 
+label{
+	display: inline-block;
+	min-width: 200px;
+}
+

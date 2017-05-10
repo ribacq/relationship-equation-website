@@ -48,33 +48,47 @@ let spiralingData = {
 	h: {
 		base: 0.37,
 		inertia: -1.6741,
-		threshNeg: -5.94,
-		threshPos: 7.94
+		threshNeg: -5.76,
+		threshPos: 9.12
 	},
 	w: {
 		base: 0.38,
 		inertia: 0.6572,
-		threshNeg: -5.76,
-		threshPos: 9.12
+		threshNeg: -5.94,
+		threshPos: 7.94
 	}
 };
 
 let testData = {
 	h: {
-		base: 10,
+		base: -1,
 		inertia: 0.8,
 		threshNeg: -2,
 		threshPos: 4
 	},
 	w: {
-		base: 16,
+		base: 1,
 		inertia: -0.4,
 		threshNeg: -3,
 		threshPos: 1
 	}
 };
 
-drawGraphs(spiralingData, 10, 10);
+drawGraphs(testData, 0, 0);
+
+document.getElementById("updateBtn").onclick = function (e) {
+	let hStart = Number(document.getElementById("hStart").value);
+	let wStart = Number(document.getElementById("wStart").value);
+	drawGraphs(happyData, hStart, wStart);
+};
+
+document.getElementById("hStart").onchange = function (e) {
+	document.getElementById("hVal").innerText = this.value;
+};
+
+document.getElementById("wStart").onchange = function (e) {
+	document.getElementById("wVal").innerText = this.value;
+};
 
 //generator function. The Relationship equation is effectively in here
 function moodGen(hStart, wStart, data, lim) {
@@ -87,12 +101,22 @@ function moodGen(hStart, wStart, data, lim) {
 			return 0;
 		}
 	};
+	let getNext = function (hCur, wCur) {
+		let hNext = data.h.base + (data.h.inertia - 1) * hCur + influence(wCur, data.w);
+		let wNext = data.w.base + (data.w.inertia - 1) * wCur + influence(hCur, data.h);
+		return [hNext, wNext];
+	};
 	let hMood = [hStart];
 	let wMood = [wStart];
 	let times = [0];
 	for (let i = 0; i < lim; i++) {
-		let hNext = data.h.base + data.h.inertia * hMood[i] + influence(wMood[i], data.w);
-		let wNext = data.w.base + data.w.inertia * wMood[i] + influence(hMood[i], data.h);
+		//Runge-Kutta method
+		let k1 = getNext(hMood[i], wMood[i]);
+		let k2 = getNext(hMood[i] + k1[0] / 2, wMood[i] + k1[1] / 2);
+		let k3 = getNext(hMood[i] + k2[0] / 2, wMood[i] + k2[1] / 2);
+		let k4 = getNext(hMood[i] + k3[0], wMood[i] + k3[1]);
+		let hNext = hMood[i] + (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]) / 6;
+		let wNext = wMood[i] + (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]) / 6;
 		hMood.push(hNext);
 		wMood.push(wNext);
 		times.push(i + 1);
@@ -102,7 +126,7 @@ function moodGen(hStart, wStart, data, lim) {
 
 function drawGraphs(coupleData, hStart, wStart) {
 	//data retrieval part
-	let lim = 400;
+	let lim = 100;
 	let moods = moodGen(hStart, wStart, coupleData, lim);
 	let wMood = moods[0];
 	let hMood = moods[1];
@@ -131,40 +155,44 @@ function drawXY(canvas, x, y) {
 		yMin = Math.min(yMin, y[i]);
 		yMax = Math.max(yMax, y[i]);
 	}
-	if (xMin > 0) { xMin *= -0.10; xMax *= 1.10; }
-	if (xMax < 0) { xMax *= -0.10; xMin *= 0.90; }
-	if (yMin > 0) { yMin *= -0.10; yMax *= 1.10; }
-	if (yMax < 0) { yMax *= -0.10; yMin *= 0.90; }
-	document.getElementById("sidep").innerHTML +=
-		xMin + " < x < " + xMax + "<br/>" +
-		yMin + " < y < " + yMax + "<br/>";
+	if (xMin > 0) { xMin *= -0.10; } else { xMin -= Math.abs(xMax - xMin) / 10; }
+	if (xMax < 0) { xMax *= -0.10; } else { xMax += Math.abs(xMax - xMin) / 10; }
+	if (yMin > 0) { yMin *= -0.10; } else { yMin -= Math.abs(yMax - yMin) / 10; }
+	if (yMax < 0) { yMax *= -0.10; } else { yMax += Math.abs(yMax - yMin) / 10; }
 	
 	//adapt data to canvas size
-	dispX = x.map(curX => {
-		return (canvas.width / (xMax - xMin)) * (curX - xMin);
-	});
-	dispY = y.map(curY => {
-		return canvas.height - (canvas.height / (yMax - yMin)) * (curY - yMin);
-	});
+	let xValToDisp = function (x) {
+		return (canvas.width / (xMax - xMin)) * (x - xMin);
+	};
+	let yValToDisp = function (y) {
+		return canvas.height - (canvas.height / (yMax - yMin)) * (y - yMin);
+	};
+	let dispX = x.map(xValToDisp);
+	let dispY = y.map(yValToDisp);
 
 	//draw axis
 	ctx.strokeStyle = '#e85656';
 	//x-axis
-	ctx.moveTo(0, canvas.height - (canvas.height / (yMax - yMin)) * (-yMin));
-	ctx.lineTo(canvas.width, canvas.height - (canvas.height / (yMax - yMin)) * (-yMin));
+	ctx.beginPath();
+	ctx.moveTo(0, yValToDisp(0));
+	ctx.lineTo(canvas.width, yValToDisp(0));
 	ctx.stroke();
 	//y-axis
-	ctx.moveTo((canvas.width / (xMax - xMin)) * (-xMin), 0);
-	ctx.lineTo((canvas.width / (xMax - xMin)) * (-xMin), canvas.height);
+	ctx.beginPath();
+	ctx.moveTo(xValToDisp(0), 0);
+	ctx.lineTo(xValToDisp(0), canvas.height);
 	ctx.stroke();
 	//axis labels
-	ctx.font = "10px Arial";
-	ctx.fillText(0, 0, canvas.height);
-	ctx.fillText(xMax, canvas.width - 20, canvas.height);
-	ctx.fillText(yMax, 0, 20);
+	ctx.font = "10px sans-serif";
+	ctx.fillText(0, xValToDisp(0) - 8, yValToDisp(0) + 12);
+	ctx.fillText(Math.round(xMin), 0, yValToDisp(0) - 2);
+	ctx.fillText(Math.round(xMax), canvas.width - 20, yValToDisp(0) - 2);
+	ctx.fillText(Math.round(yMin), xValToDisp(0) + 2, canvas.height);
+	ctx.fillText(Math.round(yMax), xValToDisp(0) + 2, 10);
 
 	//draw graph
 	ctx.strokeStyle = '#088';
+	ctx.fillStyle = '#088';
 	ctx.beginPath();
 	ctx.moveTo(dispX[0], dispY[0]);
 	for (let i = 1; i < seqLen; i++) {
