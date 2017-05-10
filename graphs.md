@@ -5,7 +5,6 @@ such as **The Relationship Equation**. In this case, there are two different tra
 are used to provide clarity.
 
 ## Mood over time
-
 *insert interactive graphs here*
 
 On this, the moods of the two members of the relationship are plotted over time. The goal is to see
