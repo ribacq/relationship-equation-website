@@ -74,9 +74,9 @@ let testData = {
 	}
 };
 
-drawGraphs(testData, 0, 0);
+drawGraphs(spiralingData, 0, 0);
 
-document.getElementById("updateBtn").onclick = function (e) {
+function updateDisplay() {
 	let hStart = Number(document.getElementById("hStart").value);
 	let wStart = Number(document.getElementById("wStart").value);
 	drawGraphs(happyData, hStart, wStart);
@@ -84,10 +84,12 @@ document.getElementById("updateBtn").onclick = function (e) {
 
 document.getElementById("hStart").onchange = function (e) {
 	document.getElementById("hVal").innerText = this.value;
+	updateDisplay();
 };
 
 document.getElementById("wStart").onchange = function (e) {
 	document.getElementById("wVal").innerText = this.value;
+	updateDisplay();
 };
 
 //generator function. The Relationship equation is effectively in here
@@ -128,8 +130,8 @@ function drawGraphs(coupleData, hStart, wStart) {
 	//data retrieval part
 	let lim = 100;
 	let moods = moodGen(hStart, wStart, coupleData, lim);
-	let wMood = moods[0];
-	let hMood = moods[1];
+	let hMood = moods[0];
+	let wMood = moods[1];
 	let times = moods[2];
 
 	//display graph
@@ -193,12 +195,13 @@ function drawXY(canvas, x, y) {
 	//draw graph
 	ctx.strokeStyle = '#088';
 	ctx.fillStyle = '#088';
-	ctx.beginPath();
-	ctx.moveTo(dispX[0], dispY[0]);
-	for (let i = 1; i < seqLen; i++) {
+	for (let i = 0; i < seqLen - 1; i++) {
+		ctx.beginPath();
+		ctx.moveTo(dispX[i - 1], dispY[i - 1]);
 		ctx.lineTo(dispX[i], dispY[i]);
+		ctx.arc(dispX[i], dispY[i], 2, 0, 2*Math.PI);
+		ctx.fill();
 	}
-	ctx.stroke();
 	ctx.beginPath();
 	ctx.arc(dispX[seqLen - 1], dispY[seqLen - 1], 5, 0, 2 * Math.PI);
 	ctx.fill();
