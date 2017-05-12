@@ -1,6 +1,6 @@
 body{
 	margin: 40px auto;
-	max-width: 650px;
+	max-width: 980px;
 	line-height: 1.2;
 	font-size: 18px;
 	color: #444;
@@ -22,7 +22,7 @@ strong{
 	color: #e85656;
 }
 
-p, canvas{
+article, p, canvas{
 	margin: 5px auto;
 	padding: 3px;
 	border: 1px solid #088;
@@ -31,8 +31,17 @@ p, canvas{
 	background: #ccc;
 }
 
+form {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+fieldset {
+	flex: 1 0 250px;
+}
+
 label{
 	display: inline-block;
-	min-width: 300px;
+	min-width: 50px;
 }
 

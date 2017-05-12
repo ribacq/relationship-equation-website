@@ -7,18 +7,52 @@
 </head>
 <body>
 	<h1>The Relationship Equation</h1>
-	<p>$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$</p>
-	<p>$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$</p>
-
 	<p>
-		<label for="hStart">Husband’s starting point:</label>
-		<input type="number" value="0" min="-20" max="20" step="0.5" id="hStart"/>
-		<span id="hVal">0</span>
-		<br/>
-		<label for="wStart">Wife’s starting point:</label>
-		<input type="number" value="0" min="-20" max="20" step="0.5" id="wStart"/>
-		<span id="wVal">0</span>
+		$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$
+		$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$
 	</p>
+
+	<article>
+		<form id="dataform">
+			<fieldset>
+				<legend>Husband</legend>
+
+				<label for="hStart">\(H_0\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.5" id="hStart"/>
+				<br/>
+				<label for="h">\(h\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="h"/>
+				<br/>
+				<label for="rh">\(r_h\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="rh"/>
+				<br/>
+				<label for="tmh">\(T^-_h\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="tmh"/>
+				<br/>
+				<label for="tph">\(T^+_h\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="tph"/>
+			</fieldset>
+			
+			<fieldset>
+				<legend>Wife</legend>
+
+				<label for="wStart">\(W_0\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.5" id="wStart"/>
+				<br/>
+				<label for="w">\(w\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="w"/>
+				<br/>
+				<label for="rw">\(r_w\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="rw"/>
+				<br/>
+				<label for="tmw">\(T^-_w\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="tmw"/>
+				<br/>
+				<label for="tpw">\(T^+_w\)</label>
+				<input type="number" value="0" min="-20" max="20" step="0.05" id="tpw"/>
+			</fieldset>
+		</form>
+	</article>
 
 	<h2>w(h)</h2>
 	<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
@@ -27,6 +61,7 @@
 	<canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
 	<canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
 
+	<script type="text/javascript" src="sampleData.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>

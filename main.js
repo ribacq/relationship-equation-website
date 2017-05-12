@@ -1,96 +1,44 @@
-//example data
-let happyData = {
-	h: {
-		base: 0.37,
-		inertia: 0.6741,
-		threshNeg: -5.94,
-		threshPos: 7.94
-	},
-	w: {
-		base: 0.38,
-		inertia: 0.6572,
-		threshNeg: -5.76,
-		threshPos: 9.12
-	}
-};
+fillForm(happyData);
+updateDisplay();
 
-let sadData = {
-	h: {
-		base: 0.41,
-		inertia: -0.0177,
-		threshNeg: -5.29,
-		threshPos: 7.94
-	},
-	w: {
-		base: 0.35,
-		inertia: -0.2419,
-		threshNeg: -6.76,
-		threshPos: 8.53
-	}
-};
+function fillForm(data) {
+	document.getElementById("h").value = data.h.base;
+	document.getElementById("rh").value = data.h.inertia;
+	document.getElementById("tmh").value = data.h.threshNeg;
+	document.getElementById("tph").value = data.h.threshPos;
+	document.getElementById("w").value = data.w.base;
+	document.getElementById("rw").value = data.w.inertia;
+	document.getElementById("tmw").value = data.w.threshNeg;
+	document.getElementById("tpw").value = data.w.threshPos;
+}
 
-let terribleData = {
-	h: {
-		base: 0.42,
-		inertia: -1.3108,
-		threshNeg: -7.71,
-		threshPos: 6.65
-	},
-	w: {
-		base: 0.30,
-		inertia: 1.323,
-		threshNeg: -6.06,
-		threshPos: 7.24
-	}
-};
-
-let spiralingData = {
-	h: {
-		base: 0.37,
-		inertia: -1.6741,
-		threshNeg: -5.76,
-		threshPos: 9.12
-	},
-	w: {
-		base: 0.38,
-		inertia: 0.6572,
-		threshNeg: -5.94,
-		threshPos: 7.94
-	}
-};
-
-let testData = {
-	h: {
-		base: -1,
-		inertia: 0.8,
-		threshNeg: -2,
-		threshPos: 4
-	},
-	w: {
-		base: 1,
-		inertia: -0.4,
-		threshNeg: -3,
-		threshPos: 1
-	}
-};
-
-drawGraphs(spiralingData, 0, 0);
+function readForm() {
+	return {
+		h: {
+			base: Number(document.getElementById("h").value),
+			inertia: Number(document.getElementById("rh").value),
+			threshNeg: Number(document.getElementById("tmh").value),
+			threshPos: Number(document.getElementById("tph").value)
+		},
+		w: {
+			base: Number(document.getElementById("w").value),
+			inertia: Number(document.getElementById("rw").value),
+			threshNeg: Number(document.getElementById("tmw").value),
+			threshPos: Number(document.getElementById("tpw").value)
+		}
+	};
+}
 
 function updateDisplay() {
 	let hStart = Number(document.getElementById("hStart").value);
 	let wStart = Number(document.getElementById("wStart").value);
-	drawGraphs(happyData, hStart, wStart);
+	drawGraphs(readForm(), hStart, wStart);
 };
 
-document.getElementById("hStart").onchange = function (e) {
-	document.getElementById("hVal").innerText = this.value;
-	updateDisplay();
-};
-
-document.getElementById("wStart").onchange = function (e) {
-	document.getElementById("wVal").innerText = this.value;
-	updateDisplay();
-};
+let dataFormInputs = document.getElementById("dataform").children;
+for (let i = 0; i < dataFormInputs.length; i++) {
+	dataFormInputs.item(i).onchange = updateDisplay;
+}
 
 //generator function. The Relationship equation is effectively in here
 function moodGen(hStart, wStart, data, lim) {
@@ -185,7 +133,7 @@ function drawXY(canvas, x, y) {
 	ctx.lineTo(xValToDisp(0), canvas.height);
 	ctx.stroke();
 	//axis labels
-	ctx.font = "10px sans-serif";
+	ctx.font = "12px sans-serif";
 	ctx.fillText(0, xValToDisp(0) - 8, yValToDisp(0) + 12);
 	ctx.fillText(Math.round(xMin), 0, yValToDisp(0) - 2);
 	ctx.fillText(Math.round(xMax), canvas.width - 20, yValToDisp(0) - 2);
