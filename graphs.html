@@ -1,40 +1,108 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<html>
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Home page Relationship equation">
         <meta name="author" content="Cléo Daguin & Quentin Ribac">
-        <title>The relationship equation</title>
-
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>The Graphs — The Relationship Equation</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="doc1.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
-    <header>
-        
-        
-        <ul class="nav nav-pills">
-              <li role="presentation"><a href="index.html">Equation</a></li>
-              <li role="presentation"><a href="spaff.html">SPAFF system</a></li>
-              <li role="presentation" class="active"><a href="#">Graphs</a></li>
+    <body class="container">
+		<header class="row">
+			<ul class="col-md-12 nav nav-pills">
+				<li role="presentation"><a href="index.html">Equation</a></li>
+				<li role="presentation"><a href="spaff.html">SPAFF System</a></li>
+                <li role="presentation" class="active"><a href="graphs.html">Graphs</a></li>
                 <li role="presentation"><a href="sources.html">Sources</a></li> 
                 <li role="presentation"><a href="about.html">About</a></li>
-        </ul>
-    </header>
-    <body>
-        <h1>Graphs</h1>
-        <div class="row">
-            <article class="col-md-offset-1 col-md-10">
-               <p>
-                    A remplir
-                </p>
-            </article>
-        </div>
-    </body>
+	        </ul>
+	    </header>
 
+        <h1 class="row">Graphs</h1>
+        <div class="row">
+			<article class="col-md-offset-1 col-md-10">
+				<p>
+					The beautiful thing with equations in maths, is that you can plot them into graphs, thus providing a
+					much easier reading of the evolution tendencies. That is especially true with qualitative equations
+					such as <strong>The Relationship Equation</strong>. In this case, there are two different tracing methods that
+					are used to provide clarity.
+				</p>
+				<form id="dataform">
+					<fieldset>
+						<legend>Husband</legend>
+
+						<label for="hStart">\(H_0\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.5" id="hStart"/>
+						<br/>
+						<label for="h">\(h\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="h"/>
+						<br/>
+						<label for="rh">\(r_h\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="rh"/>
+						<br/>
+						<label for="tmh">\(T^-_h\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="tmh"/>
+						<br/>
+						<label for="tph">\(T^+_h\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="tph"/>
+					</fieldset>
+					
+					<fieldset>
+						<legend>Wife</legend>
+
+						<label for="wStart">\(W_0\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.5" id="wStart"/>
+						<br/>
+						<label for="w">\(w\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="w"/>
+						<br/>
+						<label for="rw">\(r_w\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="rw"/>
+						<br/>
+						<label for="tmw">\(T^-_w\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="tmw"/>
+						<br/>
+						<label for="tpw">\(T^+_w\)</label>
+						<input type="number" value="0" min="-20" max="20" step="0.05" id="tpw"/>
+					</fieldset>
+				</form>
+			</article>
+		</div>
+
+		<h2 class="row">Mood over Time</h2>
+		<div class="row">
+			<article class="col-md-offset-1 col-md-10">
+				<p>
+					On this, the moods of the two members of the relationship are plotted over time. The goal is to see
+					whereto the moods tend to go, and when or if they stabilize. You may fumble with the controls, may
+					you wish to see how well your conception of a relationship and that of <strong>The Relationship Equation</strong>
+					are alike!
+				</p>
+				<canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
+				<canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
+			</article>
+		</div>
+
+		<h2 class="row">Wife over Husband</h2>
+		<div class="row">
+			<article class="col-md-offset-1 col-md-10">
+				<p>
+					And here, time is not explicitely shown, but the moods of the to partners are plotted relatively to
+					each other. The interest here is to see how well a given partner will be with another given partner.
+					It is also remarkable to see the relationship sometimes <em>literally</em> spiraling.
+				</p>
+				<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
+			</article>
+		</div>
+
+		<!-- JS inclusions -->
+		<script type="text/javascript" src="sampleData.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	</body>
 </html>

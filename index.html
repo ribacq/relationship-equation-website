@@ -1,69 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8"/>
-	<title>Canvas tests</title>
-	<link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-	<h1>The Relationship Equation</h1>
-	<p>
-		$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$
-		$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$
-	</p>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Home page Relationship equation">
+        <meta name="author" content="Cléo Daguin & Quentin Ribac">
+        <title>The Equation Explained — The Relationship Equation</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+	<body class="container">
+		<header class="row">
+			<ul class="col-md-12 nav nav-pills">
+				  <li role="presentation" class="active"><a href="index.html">Equation</a></li>
+				  <li role="presentation"><a href="spaff.html">SPAFF System</a></li>
+				  <li role="presentation"><a href="graphs.html">Graphs</a></li>
+				  <li role="presentation"><a href="sources.html">Sources</a></li>
+				  <li role="presentation"><a href="about.html">About</a></li>
+			</ul>
+		</header>
 
-	<article>
-		<form id="dataform">
-			<fieldset>
-				<legend>Husband</legend>
+		<h1 class="row">The Relationship Equation</h1>
+		<article class="row">
+			$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$
+			$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$
 
-				<label for="hStart">\(H_0\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.5" id="hStart"/>
-				<br/>
-				<label for="h">\(h\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="h"/>
-				<br/>
-				<label for="rh">\(r_h\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="rh"/>
-				<br/>
-				<label for="tmh">\(T^-_h\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="tmh"/>
-				<br/>
-				<label for="tph">\(T^+_h\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="tph"/>
-			</fieldset>
-			
-			<fieldset>
-				<legend>Wife</legend>
+			<dl>
+				<dt>\(H_{t+1}\)</dt><dd>Husband’s next mood state</dd>
+				<dt>\(h\)</dt><dd>Husband’s “basic” mood state</dd>
+				<dt>\(r_h\)</dt><dd>Husband’s capacity to stay in his mood over time: emotional inertia</dd>
+				<dt>\(H_t\)</dt><dd>Husband’s current mood state</dd>
+				<dt>\(I_{WH}\)</dt><dd>a mathematical function indicating the wife’s influence on the husband</dd>
+				<dt>\(W_t\)</dt><dd>Wife’s current mood state</dd>
+			</dl>
+			<p>
+				In simple terms, each partner’s next mood state is the sum of their “basic mood”, their previous state, and the influence the other partner has on them.
+			</p>
+		</article>
 
-				<label for="wStart">\(W_0\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.5" id="wStart"/>
-				<br/>
-				<label for="w">\(w\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="w"/>
-				<br/>
-				<label for="rw">\(r_w\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="rw"/>
-				<br/>
-				<label for="tmw">\(T^-_w\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="tmw"/>
-				<br/>
-				<label for="tpw">\(T^+_w\)</label>
-				<input type="number" value="0" min="-20" max="20" step="0.05" id="tpw"/>
-			</fieldset>
-		</form>
-	</article>
-
-	<h2>w(h)</h2>
-	<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
-
-	<h2>h(t) &amp; w(t)</h2>
-	<canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
-	<canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
-
-	<script type="text/javascript" src="sampleData.js"></script>
-	<script type="text/javascript" src="main.js"></script>
-	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+		<!-- JS inclusions -->
+		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	</body>
 </html>
 

@@ -1,34 +1,33 @@
-body{
-	margin: 40px auto;
-	max-width: 980px;
+body {
 	line-height: 1.2;
 	font-size: 18px;
 	color: #444;
-	padding: 0 10px;
+	padding: 40px;
 	background: #abcbf7;
-}
-
-html{
+	/* dat inner light…
+	min-height: 100vh;
 	box-shadow: 0 0 50vh #00f inset;
+	*/
 }
 
-h1, h2, h3{
+h1, h2, h3 {
 	line-height: 1.2;
-	color: #121de8;
+	color: #08c;
+	text-align: center;
 	text-shadow: 0 0 20px #fff;
 }
 
-strong{
+strong {
 	color: #e85656;
 }
 
-article, p, canvas{
+article, canvas {
 	margin: 5px auto;
-	padding: 3px;
+	padding: 1em;
 	border: 1px solid #088;
 	border-radius: 5px;
 	box-shadow: 0 0 5px #088;
-	background: #ccc;
+	background: #eee;
 }
 
 form {
@@ -40,8 +39,12 @@ fieldset {
 	flex: 1 0 250px;
 }
 
-label{
+label {
 	display: inline-block;
 	min-width: 50px;
+}
+
+img {
+	padding: 2em;
 }
 
