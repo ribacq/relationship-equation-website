@@ -2,15 +2,39 @@ body {
 	line-height: 1.2;
 	font-size: 18px;
 	color: #444;
-	padding: 40px;
 	background: #abcbf7;
-	/* dat inner light…
-	min-height: 100vh;
-	box-shadow: 0 0 50vh #00f inset;
-	*/
 }
 
-h1, h2, h3 {
+.container {
+	padding: 0;
+	margin: 0 auto;
+}
+
+header {
+	background: #eee;
+	padding: 0;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 1px 5px #088;
+	padding: 3px;
+}
+
+h1 {
+	color: #e85656;
+	text-shadow: 0 0 20px #fff;
+	margin: 3px 0 0 0;
+	padding: 0;
+	text-align: right;
+}
+
+h1 span.secondaryview, h1:hover span.mainview {
+	display: none;
+}
+
+h1:hover span.secondaryview {
+	display: inline;
+}
+
+h2, h3 {
 	line-height: 1.2;
 	color: #08c;
 	text-align: center;
@@ -24,7 +48,6 @@ strong {
 article, canvas {
 	margin: 5px auto;
 	padding: 1em;
-	border: 1px solid #088;
 	border-radius: 5px;
 	box-shadow: 0 0 5px #088;
 	background: #eee;
@@ -45,6 +68,8 @@ label {
 }
 
 img {
-	padding: 2em;
+	margin: 2em;
+	display: inline;
+	float: left;
 }
 
