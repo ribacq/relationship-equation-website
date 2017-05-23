@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Home page Relationship equation">
-        <meta name="author" content="Cléo Daguin & Quentin Ribac">
-        <title>The Equation Explained — The Relationship Equation</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-    </head>
-	<body class="container">
-		<header class="row">
-			<ul class="col-md-6 nav nav-pills">
-				  <li role="presentation" class="active"><a href="index.html">Equation</a></li>
-				  <li role="presentation"><a href="spaff.html">SPAFF System</a></li>
-				  <li role="presentation"><a href="graphs.html">Graphs</a></li>
-				  <li role="presentation"><a href="sources.html">Sources</a></li>
-				  <li role="presentation"><a href="about.html">About</a></li>
-			</ul>
-			<h1 class="col-md-6"><span class="mainview">The Relationship Equation</span><span class="secondaryview">\(f(t) = \) &hearts;</span></h1>
-		</header>
 
-		<h2 class="row">The Equation Explained</h2>
-		<article class="row col-md-offset-1 col-md-10">
-			$$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$
-			$$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Home page Relationship equation">
+    <meta name="author" content="Cléo Daguin & Quentin Ribac">
+    <title>The Equation Explained — The Relationship Equation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
-			<dl>
-				<dt>\(H_{t+1}\)</dt><dd>Husband’s next mood state</dd>
-				<dt>\(h\)</dt><dd>Husband’s “basic” mood state</dd>
-				<dt>\(r_h\)</dt><dd>Husband’s capacity to stay in his mood over time: emotional inertia</dd>
-				<dt>\(H_t\)</dt><dd>Husband’s current mood state</dd>
-				<dt>\(I_{WH}\)</dt><dd>a mathematical function indicating the wife’s influence on the husband</dd>
-				<dt>\(W_t\)</dt><dd>Wife’s current mood state</dd>
-			</dl>
-			<p>
-				In simple terms, each partner’s next mood state is the sum of their “basic mood”, their previous state, and the influence the other partner has on them.
-			</p>
-		</article>
+<body class="container">
+    <header class="row">
+        <ul class="col-md-6 nav nav-pills">
+            <li role="presentation" class="active"><a href="index.html">Equation</a></li>
+            <li role="presentation"><a href="spaff.html">SPAFF System</a></li>
+            <li role="presentation"><a href="graphs.html">Graphs</a></li>
+            <li role="presentation"><a href="sources.html">Sources</a></li>
+            <li role="presentation"><a href="about.html">About</a></li>
+        </ul>
+        <h1 class="col-md-6"><span class="mainview">The Relationship Equation</span><span class="secondaryview">\(f(t) = \) &hearts;</span></h1>
+    </header>
 
-		<!-- JS inclusions -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-	</body>
+    <h2 class="row">The Equation Explained</h2>
+    <article class="row col-md-offset-1 col-md-10">
+        $$ H_{t+1} = h + r_h H_t + I_{HW}(W_t) $$ $$ W_{t+1} = w + r_w W_t + I_{WH}(H_t) $$
+
+        <dl>
+            <dt>\(H_{t+1}\)</dt>
+            <dd>Husband’s next mood state</dd>
+            <dt>\(h\)</dt>
+            <dd>Husband’s “basic” mood state</dd>
+            <dt>\(r_h\)</dt>
+            <dd>Husband’s capacity to stay in his mood over time: emotional inertia</dd>
+            <dt>\(H_t\)</dt>
+            <dd>Husband’s current mood state</dd>
+            <dt>\(I_{WH}\)</dt>
+            <dd>a mathematical function indicating the wife’s influence on the husband</dd>
+            <dt>\(W_t\)</dt>
+            <dd>Wife’s current mood state</dd>
+        </dl>
+        <p>
+            In simple terms, each partner’s next mood state is the sum of their “basic mood”, their previous state, and the influence the other partner has on them.
+        </p>
+    </article>
+
+    <!-- JS inclusions -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
 </html>
-
