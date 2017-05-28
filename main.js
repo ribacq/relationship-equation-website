@@ -1,4 +1,19 @@
-fillForm(happyData);
+/* Quentin RIBAC */
+let coupleData = {
+	h: {
+		base: 0.5,
+		inertia: 0.6,
+		threshNeg: -6,
+		threshPos: 8
+	},
+	w: {
+		base: 0.4,
+		inertia: 0.7,
+		threshNeg: -8,
+		threshPos: 9
+	}
+};
+fillForm(coupleData);
 updateDisplay();
 
 function fillForm(data) {
@@ -32,12 +47,28 @@ function readForm() {
 function updateDisplay() {
 	let hStart = Number(document.getElementById("hStart").value);
 	let wStart = Number(document.getElementById("wStart").value);
+	document.getElementById("update-status").innerHTML = "<em>Updating…</em>";
 	drawGraphs(readForm(), hStart, wStart);
+	document.getElementById("update-status").innerHTML = "<strong>Up to date!</strong>";
 };
 
 let dataFormInputs = document.getElementById("dataform").children;
 for (let i = 0; i < dataFormInputs.length; i++) {
 	dataFormInputs.item(i).onchange = updateDisplay;
+}
+
+function drawGraphs(coupleData, hStart, wStart) {
+	//data retrieval part
+	let lim = 100;
+	let moods = moodGen(hStart, wStart, coupleData, lim);
+	let hMood = moods[0];
+	let wMood = moods[1];
+	let times = moods[2];
+
+	//display graph
+	drawXY(document.getElementById("thGraph"), times, hMood);
+	drawXY(document.getElementById("twGraph"), times, wMood);
+	drawXY(document.getElementById("hwGraph"), hMood, wMood);
 }
 
 //generator function. The Relationship equation is effectively in here
@@ -72,20 +103,6 @@ function moodGen(hStart, wStart, data, lim) {
 		times.push(i + 1);
 	}
 	return [hMood, wMood, times];
-}
-
-function drawGraphs(coupleData, hStart, wStart) {
-	//data retrieval part
-	let lim = 100;
-	let moods = moodGen(hStart, wStart, coupleData, lim);
-	let hMood = moods[0];
-	let wMood = moods[1];
-	let times = moods[2];
-
-	//display graph
-	drawXY(document.getElementById("thGraph"), times, hMood);
-	drawXY(document.getElementById("twGraph"), times, wMood);
-	drawXY(document.getElementById("hwGraph"), hMood, wMood);
 }
 
 function drawXY(canvas, x, y) {
