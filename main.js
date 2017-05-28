@@ -141,8 +141,7 @@ function drawXY(canvas, x, y) {
 	ctx.fillText(Math.round(yMax), xValToDisp(0) + 2, 10);
 
 	//draw graph
-	ctx.strokeStyle = '#088';
-	ctx.fillStyle = '#088';
+	ctx.fillStyle = '#08c';
 	for (let i = 0; i < seqLen - 1; i++) {
 		ctx.beginPath();
 		ctx.moveTo(dispX[i - 1], dispY[i - 1]);
