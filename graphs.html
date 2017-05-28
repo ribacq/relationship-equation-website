@@ -12,85 +12,103 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
-<body class="container">
-    <header class="row">
-        <ul class="col-md-6 nav nav-pills">
-            <li role="presentation"><a href="index.html">Equation</a></li>
-            <li role="presentation"><a href="spaff.html">SPAFF System</a></li>
-            <li role="presentation" class="active"><a href="graphs.html">Graphs</a></li>
-            <li role="presentation"><a href="sources.html">Sources</a></li>
-            <li role="presentation"><a href="about.html">About</a></li>
-        </ul>
-        <h1 class="col-md-6"><span class="mainview">The Relationship Equation</span><span class="secondaryview">\(f(t) = \) &hearts;</span></h1>
-    </header>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header navbar-left">
+				<h1><a href="index.html">The Relationship Equation</a></h1>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsing-bar"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+			</div>
+			<ul class="collapse navbar-collapse nav nav-pills navbar-right" id="collapsing-bar">
+				<li role="presentation"><a href="index.html">
+					<span class="glyphicon glyphicon-heart"></span>
+					Equation
+				</a></li>
+				<li role="presentation"><a href="spaff.html">
+					<span class="glyphicon glyphicon-star"></span>
+					SPAFF System
+				</a></li>
+				<li role="presentation" class="active"><a href="graphs.html">
+					<span class="glyphicon glyphicon-stats"></span>
+					Graphs
+				</a></li>
+				<li role="presentation"><a href="sources.html">
+					<span class="glyphicon glyphicon-list"></span>
+					Sources
+				</a></li>
+				<li role="presentation"><a href="about.html">
+					<span class="glyphicon glyphicon-info-sign"></span>
+					About
+				</a></li>
+			</ul>
+		</div>
+    </nav>
 
-    <h2 class="row">Graphs</h2>
-    <div class="row">
-    <article class="row col-md-offset-1 col-md-10">
-        <p>
-            The beautiful thing with equations in maths, is that you can plot them into graphs, thus providing a much easier reading of the evolution tendencies. That is especially true with qualitative equations such as <strong>The Relationship Equation</strong>. In this case, there are two different tracing methods that are used to provide clarity.
-        </p>
-        <form id="dataform">
-            <fieldset>
-                <legend>Husband</legend>
+	<div class="container">
+		<h2>Graphs</h2>
+		<article>
+			<p>
+				The beautiful thing with equations in maths, is that you can plot them into graphs, thus providing a much easier reading of the evolution tendencies. That is especially true with qualitative equations such as <strong>The Relationship Equation</strong>. In this case, there are two different tracing methods that are used to provide clarity.
+			</p>
+			<form id="dataform">
+				<fieldset>
+					<legend>Husband</legend>
 
-                <label for="hStart">\(H_0\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.5" id="hStart" />
-                <br/>
-                <label for="h">\(h\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="h" />
-                <br/>
-                <label for="rh">\(r_h\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="rh" />
-                <br/>
-                <label for="tmh">\(T^-_h\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="tmh" />
-                <br/>
-                <label for="tph">\(T^+_h\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="tph" />
-            </fieldset>
+					<label for="hStart">\(H_0\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.5" id="hStart" />
+					<br/>
+					<label for="h">\(h\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="h" />
+					<br/>
+					<label for="rh">\(r_h\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="rh" />
+					<br/>
+					<label for="tmh">\(T^-_h\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="tmh" />
+					<br/>
+					<label for="tph">\(T^+_h\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="tph" />
+				</fieldset>
 
-            <fieldset>
-                <legend>Wife</legend>
+				<fieldset>
+					<legend>Wife</legend>
 
-                <label for="wStart">\(W_0\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.5" id="wStart" />
-                <br/>
-                <label for="w">\(w\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="w" />
-                <br/>
-                <label for="rw">\(r_w\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="rw" />
-                <br/>
-                <label for="tmw">\(T^-_w\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="tmw" />
-                <br/>
-                <label for="tpw">\(T^+_w\)</label>
-                <input type="number" value="0" min="-20" max="20" step="0.05" id="tpw" />
-            </fieldset>
-        </form>
-    </article>
-</div>
-   <div class="row">
-    <h3 class="row">Mood over Time</h3>
-    <article class="row col-md-offset-1 col-md-10">
-        <p>
-            On this, the moods of the two members of the relationship are plotted over time. The goal is to see whereto the moods tend to go, and when or if they stabilize. You may fumble with the controls, may you wish to see how well your conception of a relationship and that of <strong>The Relationship Equation</strong> are alike!
-        </p>
-        <canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
-        <canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
-    </article>
-</div>
-   <div class="row">
-    <h3 class="row">Wife over Husband</h3>
-    <article class="row col-md-offset-1 col-md-10">
-        <p>
-            And here, time is not explicitely shown, but the moods of the to partners are plotted relatively to each other. The interest here is to see how well a given partner will be with another given partner. It is also remarkable to see the relationship sometimes <em>literally</em> spiraling.
-        </p>
-        <canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
-    </article>
+					<label for="wStart">\(W_0\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.5" id="wStart" />
+					<br/>
+					<label for="w">\(w\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="w" />
+					<br/>
+					<label for="rw">\(r_w\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="rw" />
+					<br/>
+					<label for="tmw">\(T^-_w\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="tmw" />
+					<br/>
+					<label for="tpw">\(T^+_w\)</label>
+					<input type="number" value="0" min="-20" max="20" step="0.05" id="tpw" />
+				</fieldset>
+			</form>
+		</article>
 
-</div>
+		<h3>Mood over Time</h3>
+		<article>
+			<p>
+				On this, the moods of the two members of the relationship are plotted over time. The goal is to see whereto the moods tend to go, and when or if they stabilize. You may fumble with the controls, may you wish to see how well your conception of a relationship and that of <strong>The Relationship Equation</strong> are alike!
+			</p>
+			<canvas id="thGraph" height="300" width="300">No Canvas JS</canvas>
+			<canvas id="twGraph" height="300" width="300">No Canvas JS</canvas>
+		</article>
+
+		<h3>Wife over Husband</h3>
+		<article>
+			<p>
+				And here, time is not explicitely shown, but the moods of the to partners are plotted relatively to each other. The interest here is to see how well a given partner will be with another given partner. It is also remarkable to see the relationship sometimes <em>literally</em> spiraling.
+			</p>
+			<canvas id="hwGraph" height="300" width="300">No Canvas JS</canvas>
+		</article>
+	</div>
+
     <!-- JS inclusions -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

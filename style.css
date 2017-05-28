@@ -1,44 +1,49 @@
+/* google fonts imports */
+@import url('https://fonts.googleapis.com/css?family=Fontdiner+Swanky|Reenie+Beanie|Sniglet|Tangerine');
+
 body {
-	line-height: 1.2;
-	font-size: 18px;
 	color: #444;
-	background: #abcbf7;
+	font-size: 18px;
+	background: url('hearts-bg.png') #abcbf7;
 }
 
-.container {
-	padding: 0;
-	margin: 0 auto;
-}
-
-header {
+nav.navbar {
 	background: #eee;
-	padding: 0;
-	border-radius: 0 0 5px 5px;
+	border-radius: 0 0 10px 10px;
 	box-shadow: 0 1px 5px #088;
-	padding: 3px;
+	padding: 4px;
+}
+
+nav.navbar ul.nav-pills li a {
+	color: #08c;
+}
+
+nav.navbar ul.nav-pills li.active a {
+	background-color: #08c;
+	color: #eee;
 }
 
 h1 {
 	color: #e85656;
-	text-shadow: 0 0 20px #fff;
-	margin: 3px 0 0 0;
-	padding: 0;
-	text-align: right;
+	padding: 4px;
+	margin: 0;
+	display: inline-block;
+	text-shadow: 0 0 1px #fff, 0 0 10px #e85656;
 }
 
-h1 span.secondaryview, h1:hover span.mainview {
-	display: none;
+h1 a, h1 a:active, h1 a:hover, h1 a:visited {
+	text-decoration: none;
+	color: #e85656;
 }
 
-h1:hover span.secondaryview {
-	display: inline;
+h1, h2, h3 {
+	font-family: 'Fontdiner Swanky';
 }
 
 h2, h3 {
 	line-height: 1.2;
 	color: #08c;
-	text-align: center;
-	text-shadow: 0 0 20px #fff;
+	text-shadow: 0 0 10px #fff;
 }
 
 strong {
@@ -73,6 +78,3 @@ img {
 	float: left;
 }
 
-.nav{
-    padding-bottom: 5px;
-}

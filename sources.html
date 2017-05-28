@@ -13,33 +13,53 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
-<body class="container">
-    <header class="row">
-        <ul class="col-md-6 nav nav-pills">
-            <li role="presentation"><a href="index.html">Equation</a></li>
-            <li role="presentation"><a href="spaff.html">SPAFF system</a></li>
-            <li role="presentation"><a href="graphs.html">Graphs</a></li>
-            <li role="presentation" class="active"><a href="#">Sources</a></li>
-            <li role="presentation"><a href="about.html">About</a></li>
-        </ul>
-        <h1 class="col-md-6"><span class="mainview">The Relationship Equation</span><span class="secondaryview">\(f(t) = \) &hearts;</span></h1>
-    </header>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header navbar-left">
+				<h1><a href="index.html">The Relationship Equation</a></h1>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsing-bar"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+			</div>
+			<ul class="collapse navbar-collapse nav nav-pills navbar-right" id="collapsing-bar">
+				<li role="presentation"><a href="index.html">
+					<span class="glyphicon glyphicon-heart"></span>
+					Equation
+				</a></li>
+				<li role="presentation"><a href="spaff.html">
+					<span class="glyphicon glyphicon-star"></span>
+					SPAFF System
+				</a></li>
+				<li role="presentation"><a href="graphs.html">
+					<span class="glyphicon glyphicon-stats"></span>
+					Graphs
+				</a></li>
+				<li role="presentation" class="active"><a href="sources.html">
+					<span class="glyphicon glyphicon-list"></span>
+					Sources
+				</a></li>
+				<li role="presentation"><a href="about.html">
+					<span class="glyphicon glyphicon-info-sign"></span>
+					About
+				</a></li>
+			</ul>
+		</div>
+    </nav>
 
-
-    <h2 class="row">Sources</h2>
-    <article class="row col-md-offset-1 col-md-10">
-        <center><img src="hannah.jpeg" alt="erreur" title="Hannah Fry" /></center>
-        <p>
-            The relationship equation is a work from Hannah Fry. Hannah Fry is a british mathematicien who studied in the University College of London. She has published two novels, « Proof that Santa Claus exists : The Mathematics of Christmas » and « The Mathematics of Love » which she also did a Ted Talk upon. It's from this book that come The Relationship equation which includes other aspects of love based on mathematical aspects. Hannah Fry's belief is that almost everything can be related to Maths which she proves with this equation.
-        </p>
-        <p>
-            Don't hesitate to go see the complet <a href="https://www.ted.com/talks/hannah_fry_the_mathematics_of_love?">Ted Talk</a> of Hannah Fry where she talk about other love related stuff that can be understood by maths. Also you can visit her <a href="http://www.hannahfry.co.uk/">website</a> to know more about her and her work.
-        </p>
-        <p>
-            She herself based her work on a study from 2 guys who filmed couple arguing and used all the data collected to come up with her equation.
-        </p>
-
-    </article>
+	<div class="container">
+		<h2>Sources</h2>
+		<article>
+			<img src="hannah.jpeg" alt="erreur" title="Hannah Fry"/>
+			<p>
+				The relationship equation is a work from Hannah Fry. Hannah Fry is a british mathematicien who studied in the University College of London. She has published two novels, « Proof that Santa Claus exists : The Mathematics of Christmas » and « The Mathematics of Love » which she also did a Ted Talk upon. It's from this book that come The Relationship equation which includes other aspects of love based on mathematical aspects. Hannah Fry's belief is that almost everything can be related to Maths which she proves with this equation.
+			</p>
+			<p>
+				Don't hesitate to go see the complet <a href="https://www.ted.com/talks/hannah_fry_the_mathematics_of_love?">Ted Talk</a> of Hannah Fry where she talk about other love related stuff that can be understood by maths. Also you can visit her <a href="http://www.hannahfry.co.uk/">website</a> to know more about her and her work.
+			</p>
+			<p>
+				She herself based her work on a study from 2 guys who filmed couple arguing and used all the data collected to come up with her equation.
+			</p>
+		</article>
+	</div>
 
     <!-- JS inclusions -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
