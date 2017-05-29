@@ -70,9 +70,41 @@ label {
 	min-width: 50px;
 }
 
+input {
+	max-width: 90px;
+}
+
 img {
 	margin: 2em;
 	display: inline;
 	float: left;
+}
+
+.equation {
+	text-align: center;
+}
+
+.equation span {
+}
+
+.color-one { color: #d9534f; }
+.color-two { color: #5cb85c; }
+.color-three { color: #5bc0de; }
+.color-four { color: #f0ad4e; }
+.color-five { color: #428bca; }
+.color-six { color: #d9534f; }
+
+.exp-one, .exp-two, .exp-three, .exp-four, .exp-five, .exp-six {
+	display: none;
+}
+
+.color-one:hover ~ .exp-one,
+.color-two:hover ~ .exp-two,
+.color-three:hover ~ .exp-three,
+.color-four:hover ~ .exp-four,
+.color-five:hover ~ .exp-five,
+.color-six:hover ~ .exp-six {
+	display: block;
+	text-align: justify;
 }
 

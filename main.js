@@ -48,16 +48,17 @@ function updateDisplay() {
 	let hStart = Number(document.getElementById("hStart").value);
 	let wStart = Number(document.getElementById("wStart").value);
 	document.getElementById("update-status").innerHTML = "<em>Updating…</em>";
-	drawGraphs(readForm(), hStart, wStart);
-	document.getElementById("update-status").innerHTML = "<strong>Up to date!</strong>";
+	drawGraphs(readForm(), hStart, wStart, function () {
+		document.getElementById("update-status").innerHTML = "<strong>Up to date!</strong>";
+	});
 };
 
 let dataFormInputs = document.getElementById("dataform").children;
 for (let i = 0; i < dataFormInputs.length; i++) {
-	dataFormInputs.item(i).onchange = updateDisplay;
+	dataFormInputs.item(i).addEventListener("change", updateDisplay);
 }
 
-function drawGraphs(coupleData, hStart, wStart) {
+function drawGraphs(coupleData, hStart, wStart, cb) {
 	//data retrieval part
 	let lim = 100;
 	let moods = moodGen(hStart, wStart, coupleData, lim);
@@ -69,6 +70,8 @@ function drawGraphs(coupleData, hStart, wStart) {
 	drawXY(document.getElementById("thGraph"), times, hMood);
 	drawXY(document.getElementById("twGraph"), times, wMood);
 	drawXY(document.getElementById("hwGraph"), hMood, wMood);
+
+	cb();
 }
 
 //generator function. The Relationship equation is effectively in here
