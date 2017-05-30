@@ -45,62 +45,85 @@
     </nav>
 
 	<section><div class="container">
-		<article>
-			<h2>The Equation Explained</h2>
-			<div class="equation">
-				<span class="color-one">\(H_{t+1}\)</span>
-				\(=\)
-				<span class="color-two">\(h\)</span>
-				\(+\)
-				<span class="color-three">\(r_h\)</span>
-				<span class="color-four">\(H_t\)</span>
-				\(+\)
-				<span class="color-five">\(I_{WH}(\)</span>
-				<span class="color-six">\(W_t\)</span>
-				<span class="color-five">\()\)</span>
+		<article class="row">
+			<div class="col-md-4">
+				<h2>The Equation Explained</h2>
+				<div class="equation">
+					<span class="color-one">\(H_{t+1}\)</span>
+					\(=\)
+					<span class="color-two">\(h\)</span>
+					\(+\)
+					<span class="color-three">\(r_h\)</span>
+					×
+					<span class="color-four">\(H_t\)</span>
+					\(+\)
+					<span class="color-five">\(I_{WH}(\)</span>
+					<span class="color-six">\(W_t\)</span>
+					<span class="color-five">\()\)</span>
 
-				<br/>
-
-				<span class="color-one">\(W_{t+1}\)</span>
-				\(=\)
-				<span class="color-two">\(w\)</span>
-				\(+\)
-				<span class="color-three">\(r_w\)</span>
-				<span class="color-four">\(W_t\)</span>
-				\(+\)
-				<span class="color-five">\(I_{HW}(\)</span>
-				<span class="color-six">\(H_t\)</span>
-				<span class="color-five">\()\)</span>
-
-				<dl class="exp-one">
-					<dt class="color-one">\(H_{t+1}\)</dt>
-					<dd>Husband’s next mood state</dd>
-				</dl>
-				<dl class="exp-two">
-					<dt class="color-two">\(h\)</dt>
-					<dd>Husband’s “basic” mood state</dd>
-				</dl>
-				<dl class="exp-three">
-					<dt class="color-three">\(r_h\)</dt>
-					<dd>Husband’s capacity to stay in his mood over time: emotional inertia</dd>
-				</dl>
-				<dl class="exp-four">
-					<dt class="color-four">\(H_t\)</dt>
-					<dd>Husband’s current mood state</dd>
-				</dl>
-				<dl class="exp-five">
-					<dt class="color-five">\(I_{WH}\)</dt>
-					<dd>a mathematical function indicating the wife’s influence on the husband</dd>
-				</dl>
-				<dl class="exp-six">
-					<dt class="color-six">\(W_t\)</dt>
-					<dd>Wife’s current mood state</dd>
-				</dl>
+					<!--
+					<br/>
+					<span class="color-one">\(W_{t+1}\)</span>
+					\(=\)
+					<span class="color-two">\(w\)</span>
+					\(+\)
+					<span class="color-three">\(r_w\)</span>
+					<span class="color-four">\(W_t\)</span>
+					\(+\)
+					<span class="color-five">\(I_{HW}(\)</span>
+					<span class="color-six">\(H_t\)</span>
+					<span class="color-five">\()\)</span>
+					-->
+				</div>
+				<p>
+					This “equation” is actually a pair of reccuring integer number sequences. Here, a couple is represented by the sequences called <strong>\((H_t)\)</strong>, for Husband, and <strong>\((W_t)\)</strong>, for Wife.
+				</p>
+				<p>
+					In simple terms, each partner’s next mood state is the sum of their “basic mood”, their previous state, and the influence the other partner has on them.
+				</p>
 			</div>
 
-			<p>
-				In simple terms, each partner’s next mood state is the sum of their “basic mood”, their previous state, and the influence the other partner has on them.
-			</p>
+			<div class="col-md-4 margin-top-20">
+				<div class="panel panel-danger">
+					<div class="panel-heading">\(H_{t+1}\)</div>
+					<div class="panel-body">
+						Husband’s next mood state
+					</div>
+				</div>
+				<div class="panel panel-success">
+					<div class="panel-heading">\(h\)</div>
+					<div class="panel-body">
+						Husband’s “basic” mood state
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">\(r_h\)</div>
+					<div class="panel-body">
+						Husband’s capacity to stay in his mood over time: emotional inertia
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 margin-top-20">
+				<div class="panel panel-warning">
+					<div class="panel-heading">\(H_t\)</div>
+					<div class="panel-body">
+						Husband’s current mood state
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">\(I_{WH}\)</div>
+					<div class="panel-body">
+						A mathematical function indicating the wife’s influence on the husband
+					</div>
+				</div>
+				<div class="panel panel-danger">
+					<div class="panel-heading">\(W_t\)</div>
+					<div class="panel-body">
+						Wife’s current mood state
+					</div>
+				</div>
+			</div>
 		</article>
 	</div></section>
 
