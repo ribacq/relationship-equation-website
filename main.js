@@ -60,7 +60,7 @@ for (let i = 0; i < dataFormInputs.length; i++) {
 
 function drawGraphs(coupleData, hStart, wStart, cb) {
 	//data retrieval part
-	let lim = 100;
+	let lim = 42;
 	let moods = moodGen(hStart, wStart, coupleData, lim);
 	let hMood = moods[0];
 	let wMood = moods[1];
@@ -141,7 +141,7 @@ function drawXY(canvas, x, y) {
 	let dispY = y.map(yValToDisp);
 
 	//draw axis
-	ctx.strokeStyle = '#e85656';
+	ctx.strokeStyle = '#d9434f';
 	//x-axis
 	ctx.beginPath();
 	ctx.moveTo(0, yValToDisp(0));
