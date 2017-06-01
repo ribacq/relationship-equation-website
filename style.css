@@ -99,3 +99,12 @@ img {
 .color-five { color: #428bca; }
 .color-six { color: #d9534f; }
 
+ul{
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+.emo{
+    font-size: 3em;
+}
