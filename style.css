@@ -1,5 +1,5 @@
 /* google fonts imports */
-@import url('https://fonts.googleapis.com/css?family=Fontdiner+Swanky|Reenie+Beanie|Sniglet|Tangerine');
+@import url('https://fonts.googleapis.com/css?family=Fontdiner+Swanky');
 
 body {
 	color: #444;
@@ -9,10 +9,14 @@ body {
 	text-align: justify;
 }
 
-nav.navbar {
+nav.navbar, canvas {
 	background: #ccc;
-	box-shadow: 0 0 5px #088;
+	box-shadow: 0 0 5px #08c;
 	padding: 4px;
+}
+
+canvas {
+	border-radius: 4px;
 }
 
 nav.navbar ul.nav-pills li a {
@@ -38,10 +42,10 @@ h1 a, h1 a:active, h1 a:hover, h1 a:visited {
 section {
 	box-shadow: 0 0 5px #088;
 	background: #fff;
+	padding-bottom: 20px;
 }
 
-
-h1, h2, h3 {
+h1, h2, h3, .title-font {
 	font-family: 'Fontdiner Swanky';
 }
 
